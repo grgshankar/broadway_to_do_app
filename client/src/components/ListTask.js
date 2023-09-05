@@ -1,7 +1,8 @@
-import { Col, InputGroup, Row } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import Accordion from "react-bootstrap/Accordion";
-import AlertMsg from "./Alert";
-import Subtask from "./SubtaskList";
+import AlertMsg from "./AlertMsg";
+import SubtaskList from "./SubtaskList";
+import TaskStatus from "./TaskStatus";
 
 function ListTask({ tasks }) {
   tasks = [
@@ -10,7 +11,19 @@ function ListTask({ tasks }) {
       title: "Task 1",
       subtask: [
         {
+          _id: "1",
           title: "Sub task 1",
+          status: "pending",
+        },
+        {
+          _id: "2",
+          title: "Sub task 2",
+          status: "completed",
+        },
+        {
+          _id: "3",
+          title: "Sub task 3",
+          status: "pending",
         },
       ],
     },
@@ -19,37 +32,51 @@ function ListTask({ tasks }) {
       title: "Task 2",
       subtask: [
         {
+          _id: "1",
+          title: "Sub task 1",
+          status: "pending",
+        },
+        {
+          _id: "2",
           title: "Sub task 2",
+          status: "completed",
+        },
+        {
+          _id: "3",
+          title: "Sub task 3",
+          status: "completed",
         },
       ],
     },
   ];
   return (
-    <Accordion defaultActiveKey={["0"]} alwaysOpen>
+    <Accordion defaultActiveKey={["0"]}>
       {tasks && tasks.length > 0 ? (
         tasks.map((task, index) => (
           <>
-            <div className="accordion_wrapper mb-3" key={task._id}>
-              <Accordion.Item eventKey={index}>
-                <Accordion.Header>
-                  <Row className="todo_title_wrapper">
-                    <Col md={8}>
-                      <InputGroup.Checkbox aria-label="Checkbox for following text input" />
-                      <span className="ms-3">
+            <Accordion.Item
+              className="accordion_wrapper mb-3"
+              key={task._id}
+              eventKey={index}
+            >
+              <Accordion.Header>
+                <Form className="todo_title_wrapper">
+                  <Form.Group className="d-flex justify-content-between">
+                    <span className="d-flex">
+                      <Form.Check aria-label="Checkbox for following text input" />
+                      <span className="mx-3">
                         {task?.title || "Task Title"}
                       </span>
-                    </Col>
-                    <Col md={4}>
-                      <p>3 of 4 completed</p>
-                    </Col>
-                  </Row>
-                </Accordion.Header>
-                <Accordion.Body>
-                  {/* {task?.subtask[0]?.title || "No any subtask"} */}
-                  <Subtask subtask={task?.subtask[0]?.title} />
-                </Accordion.Body>
-              </Accordion.Item>
-            </div>
+                    </span>
+                    <TaskStatus total={task?.subtask.length} completed="2" />
+                  </Form.Group>
+                </Form>
+              </Accordion.Header>
+              <Accordion.Body>
+                {/* {task?.subtask[0]?.title || "No any subtask"} */}
+                <SubtaskList subtasks={task?.subtask} />
+              </Accordion.Body>
+            </Accordion.Item>
           </>
         ))
       ) : (

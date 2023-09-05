@@ -13,15 +13,7 @@
 .accordion .accordion-button:not(.collapsed)::after {
   transform: translate(0, -50%) var(--bs-accordion-btn-icon-transform);
 }
-.todo_title_wrapper span.input-group-text,
-.subtask_list span.input-group-text {
-  display: inline-block;
-}
-.btn_remove {
-  background-color: transparent;
-  padding: 0px;
-  color: #000;
-  display: inline-block;
-  border: none;
-  height: 16px;
+
+p {
+  margin: 0px;
 }
