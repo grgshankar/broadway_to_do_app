@@ -1,10 +1,12 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import { RiDeleteBin6Line } from "react-icons/ri";
+import PopupAlert from "../utils/PopupAlert";
 
 const ViewTask = ({ label, status }) => {
   const remove = () => {
     console.log("ready to remove");
+    PopupAlert({});
   };
   return (
     <>
