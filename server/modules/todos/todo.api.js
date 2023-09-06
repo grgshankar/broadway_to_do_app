@@ -1,15 +1,16 @@
 const router = require("express").Router();
 const todoController = require("./todo.controller");
 
-// list all
-router.get("/", async (req, res, next) => {
+// create
+router.post("/", async (req, res, next) => {
   try {
-    const result = await todoController.list();
+    const result = await todoController.create(req.body);
     res.json({ data: result, msg: "success" });
   } catch (error) {
     next(error);
   }
 });
+
 // get by id
 router.get("/:id", async (req, res, next) => {
   try {
@@ -20,16 +21,17 @@ router.get("/:id", async (req, res, next) => {
     next(error);
   }
 });
-// create
-router.post("/", async (req, res, next) => {
+
+// list all
+router.get("/", async (req, res, next) => {
   try {
-    const { payload } = req.body;
-    const result = await todoController.create(payload);
+    const result = await todoController.list();
     res.json({ data: result, msg: "success" });
   } catch (error) {
     next(error);
   }
 });
+
 // updateById
 router.put("/:id", async (req, res, next) => {
   try {
@@ -42,7 +44,7 @@ router.put("/:id", async (req, res, next) => {
   }
 });
 // delete
-router.get("/:id", async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await todoController.remove(id);

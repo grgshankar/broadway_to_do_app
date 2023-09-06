@@ -1,8 +1,12 @@
 const mongoose = require("mongoose");
 const commonSchema = require("../../utils/commonSchema");
 const TodoSchema = new mongoose.Schema({
-  title: String,
-  status: { type: String, enum: ["pending", "completed"] },
+  title: { type: String, required: true },
+  status: {
+    type: String,
+    enum: ["pending", "completed"],
+    default: "completed",
+  },
   ...commonSchema,
 });
 
