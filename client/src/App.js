@@ -6,12 +6,13 @@ import ListTask from "./components/ListTask";
 import Title from "./components/Title";
 import Toaster from "./components/Toaster";
 import "./css/style.css";
+import Demo from "./Demo";
 // import Demo from "./Demo";
 function App() {
   return (
     <div className="App">
       <Container className="text-center">
-        <Row>
+        {/* <Row>
           <Col md={12}>
             <Toaster />
             <Title title="TODO APP" />
@@ -24,8 +25,8 @@ function App() {
 
             <ListTask />
           </Col>
-        </Row>
-        {/* <Demo tasks="hello" /> */}
+        </Row> */}
+        <Demo tasks="hello" />
       </Container>
     </div>
   );
