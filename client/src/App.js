@@ -7,6 +7,7 @@ import Title from "./components/Title";
 import Toaster from "./components/Toaster";
 import "./css/style.css";
 import Demo from "./Demo";
+import Navbar from "./Navbar";
 // import Demo from "./Demo";
 function App() {
   return (
@@ -26,7 +27,8 @@ function App() {
             <ListTask />
           </Col>
         </Row> */}
-        <Demo tasks="hello" />
+        {/* <Demo tasks="hello" /> */}
+        <Navbar />
       </Container>
     </div>
   );
