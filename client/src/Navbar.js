@@ -1,17 +1,13 @@
-import { useContext } from "react";
-import { ThemeContext } from "../src/contexts/ThemeContext";
-
+import { useThemeContext } from "./contexts/ThemeContext";
 function Navbar() {
-  const context = useContext(ThemeContext);
-  if (!context)
-    throw new Error("Theme should be called inside ThemeContextProvider");
-  const { theme, setTheme, toggleTheme } = context;
+  const { theme, toggleTheme } = useThemeContext();
   return (
     <div>
       my current theme is {theme}
       <br></br>
-      <button onClick={() => setTheme("dark-theme")}>Dark Theme</button>
-      <button onClick={() => setTheme("light-theme")}>Light Theme</button>
+      <button onClick={toggleTheme}>
+        Change to {theme === "light-theme" ? "dark" : "light"}
+      </button>
     </div>
   );
 }
