@@ -1,14 +1,15 @@
+import { Form } from "react-bootstrap";
 import { useThemeContext } from "./contexts/ThemeContext";
 function Navbar() {
-  const { theme, toggleTheme } = useThemeContext();
+  const { toggleTheme } = useThemeContext();
   return (
-    <div>
-      my current theme is {theme}
-      <br></br>
-      <button onClick={toggleTheme}>
-        Change to {theme === "light-theme" ? "dark" : "light"}
-      </button>
-    </div>
+    <>
+      <Form.Check // prettier-ignore
+        type="switch"
+        id="custom-switch"
+        onClick={toggleTheme}
+      />
+    </>
   );
 }
 

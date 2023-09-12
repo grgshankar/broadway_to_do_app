@@ -8,12 +8,16 @@ import Toaster from "./components/Toaster";
 import "./css/style.css";
 import Demo from "./Demo";
 import Navbar from "./Navbar";
+import { useThemeContext } from "./contexts/ThemeContext";
 // import Demo from "./Demo";
+import "./App.css";
 function App() {
+  const { theme } = useThemeContext();
   return (
-    <div className="App">
-      <Container className="text-center">
-        {/* <Row>
+    <div className={`App ${theme}`}>
+      <Container className="main_container text-center">
+        <Navbar />
+        <Row>
           <Col md={12}>
             <Toaster />
             <Title title="TODO APP" />
@@ -26,9 +30,8 @@ function App() {
 
             <ListTask />
           </Col>
-        </Row> */}
+        </Row>
         {/* <Demo tasks="hello" /> */}
-        <Navbar />
       </Container>
     </div>
   );
